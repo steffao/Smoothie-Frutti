@@ -23,7 +23,8 @@ body
   color: rgb(0, 0, 0);
   font-size: 1em;
   justify-content: center;
-  background-color: #f2f2f2;    
+  background-color: #f2f2f2;
+  margin: 0;   
 }
 a{
   text-decoration: none;

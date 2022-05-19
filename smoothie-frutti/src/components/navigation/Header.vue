@@ -35,16 +35,23 @@
             right: 0;
             align-self: center;
         }
-        @media only screen and (max-width: 767px) {
+        
+    }
+    @media only screen and (max-width: 767px) {
+        header {
             .logo {
                 font-size: 3em;
             }
-        }
-        @media only screen and (max-width: 424px) {
+        }           
+            
+    }
+    @media only screen and (max-width: 424px) {
+        header {
+            height: 150px;
             .logo {
-                font-size: 2em;
-            }
-        }
+            font-size: 2em;
+            }               
+        }                    
     }
 </style>
 
