@@ -1,46 +1,71 @@
 <template>    
     <aside>
-        <input type="search" id="mySearch" @keyup="findFruit()" placeholder="Search.." title="Type in a category" v-model="searchedFruit">
-        <ul v-show="searchedFruit" id="fruitsList">
-            <li><article>
-                <h3>Banana</h3>
-                <div>3KC</div>
-            </article></li>
-            <li><article>
-                <h3>Mango</h3>
-                <div>6KC</div>
-            </article></li>
-            <li><article>
-                <h3>Feijoa</h3>
-                <div>38KC</div>
-            </article></li>
-            <li><article>
-                <h3>Orange</h3>
-                <div>7KC</div>
-            </article></li>
-            <li><article>
-                <h3>Cherry</h3>
-                <div>3KC</div>
-            </article></li>            
-        </ul>
+        <input type="search" class="mySearch" @keyup="findFruits()" placeholder="Search..." title="Type in a fruit" v-model="searchedFruit">
+        <div v-show="searchedFruit" class="fruitsFound">            
+            <article class="fruitFound" v-for="(fruit,index) in filteredFruits" :key="index" @click="addFruit(fruit)">
+                <div class="fruitFound__avatar">
+                    <img class="fruitFound__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
+                </div>
+                <div class="fruitFound__info">
+                    <h3 class="fruitFound__info__name">{{fruit.name}}</h3>
+                    <div class="fruitFound__info__calories"><strong>{{fruit.nutritions.calories}}</strong> (cal per 100g)</div>
+                </div>
+            </article>
+        </div>
     </aside>
 </template>
   
 <style scoped lang="scss"> 
   
   /* Style the search box */
-  #mySearch {
+  .mySearch {
     width: 100%;
     font-size: 18px;
     padding: 11px;
     border: 1px solid #ddd;
   }
   
-  /* Style the navigation menu */
-  #myMenu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  .fruitsFound {
+    box-shadow: 0px 7px 30px -15px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    overflow-y: scroll;
+    height: 200px;
+    .fruitFound {
+        display: flex;
+        height: 80px;
+        padding-bottom: .5em;
+        padding-top: .5em;
+        padding-right: .5em;
+        padding-left: .5em;
+
+        &:hover {
+            background-color: orange;
+            cursor: pointer;
+        }
+        &__avatar{
+            border-radius: 10px;            
+            height: 100%;
+            overflow: hidden;
+            margin-right: 1.5em;
+            &__img {
+                height: 100%;                
+            }
+        }
+        &__info {
+            &__name {
+                font-weight: bold;
+            }
+            &__calories {
+                font-style: italic;
+            }
+            @media only screen and (max-width: 375px) {
+                &__calories {
+                    font-size: .8em;
+                }                
+            }
+
+        }
+    }
   }
   
   /* Style the navigation links */
@@ -56,36 +81,34 @@
   }
 </style>
   
-<script>    
+<script>
+import { mapState } from 'vuex' 
     
 export default {
     components : {
     },
     data : function () {
         return {
-        searchedFruit: ''            
+            filteredFruits : [],
+            searchedFruit: ''           
         }
+    },
+    computed: {
+        ...mapState({ allFruits: 'fruits' }),
+        ...mapState({ cart: 'cart' }),
     },
     mounted () {
         this.getAllFruits()
-
     },
     methods : {
-        findFruit: function() {
-            console.log(this.searchedFruit)
-            var a, i;
-            const fruitsList = document.getElementById("fruitsList")
-            const filter = this.searchedFruit.toUpperCase();
-            let fruitFound = fruitsList.getElementsByTagName("li");
-            for (i = 0; i < fruitFound.length; i++) {
-                let a = fruitFound[i].getElementsByTagName("h3")[0];
-                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                fruitFound[i].style.display = "";
-                } else {
-                fruitFound[i].style.display = "none";
-                }
-            }
+        findFruits : function () {            
+            this.filteredFruits = this.allFruits.filter(fruit => fruit.name.toUpperCase().indexOf(this.searchedFruit.toUpperCase()) > -1)
         },
+        addFruit : function(fruit) {
+            console.log('Je kiffe ce ' + fruit.name)
+            this.$store.dispatch('addFruitToCart', fruit)       
+
+        },        
         getAllFruits: function () {
             const corsProxy = "https://evening-lake-85504.herokuapp.com/"
             const apiUrl = "https://www.fruityvice.com/api/fruit"
@@ -95,11 +118,12 @@ export default {
                     'Content-Type': 'application/json',
                 },
             })
-                .then(res => res.json())
-                .then(fruits => {
-                    console.log(fruits);
-                })
-                .catch(responseError => {console.log(responseError)});
+            .then(res => res.json())
+            .then(fruitsData => {
+                console.log(fruitsData);
+                this.$store.dispatch('getFruitsData', fruitsData);
+            })
+            .catch(responseError => {console.log(responseError)});
         }
     }
     

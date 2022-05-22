@@ -4,12 +4,12 @@ import HelloWorld from '@/components/HelloWorld.vue'
 </script>
 
 <template>
-  
 
   <RouterView />
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Neucha:wght@400;700&display=swap');
 @font-face {
   font-family: 'Montserrat';
   font-style: normal;
@@ -19,19 +19,19 @@ import HelloWorld from '@/components/HelloWorld.vue'
 }
 body
 {
-  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  font-family: 'Neucha','Montserrat', Arial, Helvetica, sans-serif;
   color: rgb(0, 0, 0);
   font-size: 1em;
   justify-content: center;
-  background-color: #f2f2f2;
-  margin: 0;   
+  background-color: #fff;
+  margin: 0;
 }
 a{
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
 input{
-  font-family: 'Caviar Dreams', Arial, Helvetica, sans-serif;
+  font-family: 'Neucha', Arial, Helvetica, sans-serif;
 }
 h1{
   font-size: 1.25em;
