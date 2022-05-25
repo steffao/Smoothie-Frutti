@@ -1,19 +1,18 @@
-<template> 
-    
-    <aside>
-        <input ref="searchBarInput" type="search" class="mySearch" @keyup="findFruits()" placeholder="Search..." title="Type in a fruit" v-model="searchedFruit">
-        <div v-click-away="onClickAway" v-show="searchedFruit" class="fruitsFound">            
-            <article class="fruitFound" v-for="(fruit,index) in filteredFruits" :key="index" @click="addNewFruit(fruit)">
-                <div class="fruitFound__avatar">
-                    <img class="fruitFound__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
+<template>
+    <div class="blinder">
+        <div  class="fruitsCart">
+            <article class="selectedFruit" v-for="(selectedFruit,index) in selectedFruits" :key="index">
+                <div class="selectedFruit__avatar">
+                    <img class="selectedFruit__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
                 </div>
-                <div class="fruitFound__info">
-                    <h3 class="fruitFound__info__name">{{fruit.name}}</h3>
-                    <div class="fruitFound__info__calories"><strong>{{fruit.nutritions.calories}}</strong> (cal per 100g)</div>
-                </div>
+                <h3 class="selectedFruit__name">{{selectedFruit.name}}</h3>
+                <div class="selectedFruit__calories"><strong>{{selectedFruit.nutritions.calories}}</strong> cal</div>
+                <input type="number" class="calories__counter" name="calories" step="100" placeholder="100" v-model="amountOfCalories">
+                <i class="fa fa-times" aria-hidden="true" @click="removeFruit(selectedFruit)"></i>
             </article>
         </div>
-    </aside>
+        
+    </div>    
 </template>
   
 <style scoped lang="scss">
@@ -21,31 +20,19 @@ $primary-color : #F29F05;
 $secondary-color : #F2CB05;
 $tertiary-color : #D962AF;
 $quadrary-color : #730217;
-  
-  .mySearch {
-    width: 100%;
-    font-size: 18px;
-    padding: 11px;
-    border: 1px solid #ddd;
-  }
-  
-  .fruitsFound {
-    box-shadow: 0px 7px 30px -15px rgba(0,0,0,0.75);
-    border-radius: 10px;
-    overflow-y: scroll;
-    height: 200px;
-    .fruitFound {
+.blinder {
+    width: 50%; 
+  .fruitsCart {    
+    min-height: 400px;
+    .selectedFruit {
         display: flex;
-        height: 80px;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
         padding-bottom: .5em;
         padding-top: .5em;
         padding-right: .5em;
         padding-left: .5em;
-
-        &:hover {
-            background-color: $primary-color;
-            cursor: pointer;
-        }
         &__avatar{
             border-radius: 10px;            
             height: 100%;
@@ -71,7 +58,7 @@ $quadrary-color : #730217;
         }
     }
   }
-  
+}  
   /* Style the navigation links */
   #myMenu li a {
     padding: 12px;
@@ -86,38 +73,33 @@ $quadrary-color : #730217;
 </style>
   
 <script>
-import { mapState } from 'vuex'
-
+import { mapState } from 'vuex' 
     
 export default {
     components : {
     },
+    
     data : function () {
         return {
-            filteredFruits : [],
-            searchedFruit: '',
-            searchBar : document.querySelector('input.mySearch'),
-               
+            amountOfCalories : 100,         
         }
     },
     computed: {
-        ...mapState({ allFruits: 'fruits' }),
-        ...mapState({ cart: 'cart' }),
+        ...mapState({ allFruits: 'fruits' },{ cart: 'cart' }),
+        selectedFruits: function () {
+            return this.$store.getters.FRUITS_CART_GETTER
+        }
     },
     mounted () {
         this.getAllFruits()
     },
-    
     methods : {
         findFruits : function () {            
             this.filteredFruits = this.allFruits.filter(fruit => fruit.name.toUpperCase().indexOf(this.searchedFruit.toUpperCase()) > -1)
-        },
-        onClickAway(event) {
-            this.searchedFruit = ''
-        },       
-        addNewFruit : function(newFruit) {
-            this.$store.dispatch('addFruitToCart', newFruit)
-            this.searchedFruit = ''
+        },              
+        removeFruit : function(selectedFruit) {
+            console.log(selectedFruit)
+            this.$store.dispatch('removeFruitToCart', selectedFruit)            
         },        
         getAllFruits: function () {
             const corsProxy = "https://evening-lake-85504.herokuapp.com/"
@@ -134,7 +116,7 @@ export default {
                 this.$store.dispatch('getFruitsData', fruitsData);
             })
             .catch(responseError => {console.log(responseError)});
-        },
+        }
     }
     
 }  

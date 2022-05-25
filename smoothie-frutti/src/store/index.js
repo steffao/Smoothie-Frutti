@@ -1,39 +1,40 @@
 import {createStore} from 'vuex'
 
-const getDefaultState = () => {
+const clearCart = () => {
     return { 
-        user:null,
-        token:null,
+        cart:[]
     }
 }
 
 export default createStore({
     state:{ 
         fruits:null,
-        cart:null,
+        cart:[],
     },
     getters:{
-        IS_USER_AUTHENTICATE_GETTER(state) {
-            return state.token !== null
-        },
-        IS_USER_ISADMIN_GETTER(state) {
-            return state.user !== null && state.user.isAdmin
-        },
-        GET_USER_DATA_GETTER(state) {
-            return state.user
-        },         
+        FRUITS_CART_GETTER(state) {
+            return state.cart
+        }, 
+        TOTAL_CALORIES_GETTER(state) {
+            let total = 0
+            for (let item of state.cart) {           
+                total += item.nutritions.calories                
+            }
+            return total
+        },   
     },
     mutations: {
         GET_FRUITS_DATA(state, data) {
-            state.fruits = data
-            console.log(state.fruits)   
+            state.fruits = data  
         },
-        ADD_FRUIT(state, fruit) {
-            state.cart = fruit
-            console.log(state.cart)   
+        ADD_FRUIT(state, newFruit) {
+            state.cart.push(newFruit)
         },
-        RESET_STATE(state) {
-            Object.assign(state, getDefaultState())
+        REMOVE_FRUIT(state, selectedFruit) {
+            state.cart.splice(state.cart.findIndex(fruit => fruit.name === selectedFruit.name),1)            
+        },
+        CLEAR_CART(state) {
+            Object.assign(state.cart, clearCart())
         },  
         
     },
@@ -41,8 +42,11 @@ export default createStore({
         getFruitsData({commit}, data) { 
             commit("GET_FRUITS_DATA", data);
         },
-        addFruitToCart({commit}, fruit) { 
-            commit("ADD_FRUIT", fruit);
+        addFruitToCart({commit}, newFruit) { 
+            commit("ADD_FRUIT", newFruit);
+        },
+        removeFruitToCart({commit}, selectedFruit) { 
+            commit("REMOVE_FRUIT", selectedFruit);
         },
         getFruitData({commit}, data) { 
             commit("UPDATE_STATE", data);
