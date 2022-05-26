@@ -21,6 +21,11 @@ $primary-color : #F29F05;
 $secondary-color : #F2CB05;
 $tertiary-color : #D962AF;
 $quadrary-color : #730217;
+
+@keyframes downFruitsFound {
+    0% {height: 0px;}
+    100% {height: 200px;}    
+}
   
   .mySearch {
     width: 100%;
@@ -32,8 +37,10 @@ $quadrary-color : #730217;
   .fruitsFound {
     box-shadow: 0px 7px 30px -15px rgba(0,0,0,0.75);
     border-radius: 10px;
+    overflow: hidden;
     overflow-y: scroll;
     height: 200px;
+    animation: downFruitsFound .5s ease-in-out;
     .fruitFound {
         display: flex;
         height: 80px;
@@ -41,7 +48,6 @@ $quadrary-color : #730217;
         padding-top: .5em;
         padding-right: .5em;
         padding-left: .5em;
-
         &:hover {
             background-color: $primary-color;
             cursor: pointer;
@@ -67,27 +73,13 @@ $quadrary-color : #730217;
                     font-size: .8em;
                 }                
             }
-
         }
     }
-  }
-  
-  /* Style the navigation links */
-  #myMenu li a {
-    padding: 12px;
-    text-decoration: none;
-    color: black;
-    display: block
-  }
-  
-  #myMenu li a:hover {
-    background-color: #eee;
   }
 </style>
   
 <script>
 import { mapState } from 'vuex'
-
     
 export default {
     components : {
@@ -97,7 +89,6 @@ export default {
             filteredFruits : [],
             searchedFruit: '',
             searchBar : document.querySelector('input.mySearch'),
-               
         }
     },
     computed: {
@@ -130,13 +121,11 @@ export default {
             })
             .then(res => res.json())
             .then(fruitsData => {
-                console.log(fruitsData);
                 this.$store.dispatch('getFruitsData', fruitsData);
             })
             .catch(responseError => {console.log(responseError)});
         },
     }
-    
 }  
     
 </script>

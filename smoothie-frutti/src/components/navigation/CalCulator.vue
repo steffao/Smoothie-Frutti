@@ -15,7 +15,7 @@ $tertiary-color : #D962AF;
 $quadrary-color : #730217;
 .calculator {
     margin-top: 30px;
-    width: 50%;
+    width: 40%;
     height: 40vw;
     background-image: url('../../assets/img/fruits/funny smoothie.jpeg');    
     background-repeat: no-repeat;    
@@ -27,21 +27,27 @@ $quadrary-color : #730217;
     &__results {
         border-radius: 25px;
         padding: 3em;
-        background-color:white;        
+        background-color:rgba($color: #fff, $alpha: 0.9);               
         display: flex;
         flex-direction: column;
         justify-content: center;
+        @media only screen and (max-width: 425px) {
+            padding: 2em;
+
+        }
         .totalCalories {
             color: $tertiary-color;
             font-size: 1em;
             font-weight: bold;
             &__cal {
-                
                 font-size: 2em;
-
             }
         }
-
+    }
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+        background-size: 70%;
+        align-items:center; 
     }
 }
 .fruitsCart--empty {

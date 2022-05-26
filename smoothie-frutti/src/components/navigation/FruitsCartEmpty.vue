@@ -40,6 +40,9 @@ $quadrary-color : #730217;
             } 
         }
     }
+    @media only screen and (max-width: 375px) {
+        height: 50vh;
+    }
 }
 </style>
   

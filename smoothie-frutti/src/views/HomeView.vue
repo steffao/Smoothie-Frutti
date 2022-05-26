@@ -18,7 +18,10 @@
 </template>
 
 <style lang="scss" scoped>
-
+@keyframes displayMain {
+    0% {opacity: 0;}
+    100% {opacity: 1;}    
+}
 section{
   padding-left: 10%;
   padding-right: 10%;
@@ -27,6 +30,10 @@ main {
   margin-top: 20px;
   display: flex;
   box-shadow: 0px 7px 30px -15px rgba(0,0,0,0.75);
+  animation: displayMain 1s ease-in-out;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 </style>

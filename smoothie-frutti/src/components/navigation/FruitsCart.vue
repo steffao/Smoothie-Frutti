@@ -5,10 +5,15 @@
                 <div class="selectedFruit__avatar">
                     <img class="selectedFruit__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
                 </div>
-                <h3 class="selectedFruit__name">{{selectedFruit.name}}</h3>
-                <div class="selectedFruit__calories"><strong>{{selectedFruit.nutritions.calories}}</strong> cal</div>
-                <input type="number" class="calories__counter" name="calories" step="100" placeholder="100" v-model="amountOfCalories">
-                <i class="fa fa-times" aria-hidden="true" @click="removeFruit(selectedFruit)"></i>
+                <div class="selectedFruit__info">
+                    <h3 class="selectedFruit__info__name">{{selectedFruit.name}}</h3>
+                    <div class="selectedFruit__info__quantity">
+                        <div class="selectedFruit__info__quantity--calories"><b>{{selectedFruit.nutritions.calories}}</b> cal</div>
+                        <input type="number" class="calories__counter" name="calories" step="100" placeholder="100" v-model="amountOfCalories"> 
+
+                    </div>        
+                </div>
+                <i class="fa fa-times" aria-hidden="true" @click="removeFruit(selectedFruit)"></i>               
             </article>
         </div>
         
@@ -20,44 +25,93 @@ $primary-color : #F29F05;
 $secondary-color : #F2CB05;
 $tertiary-color : #D962AF;
 $quadrary-color : #730217;
+
+@keyframes addFruit {
+    0% {opacity: 0;}
+    100% {opacity: 1;}    
+}
+@keyframes removeFruit {
+    0% {opacity: 1;}
+    100% {opacity: 0;}    
+}
 .blinder {
-    width: 50%; 
+    width: 60%; 
+    margin: 20px 20px 20px 20px;
   .fruitsCart {    
     min-height: 400px;
+    max-height: 500px;
+    overflow-y : auto;
+    display: flex;
+    flex-wrap: wrap;
     .selectedFruit {
         display: flex;
+        flex-direction: column;
+        box-shadow: 0px 7px 30px -15px rgba(0,0,0,0.75);
+        border-radius: 10px;
         align-items: center;
         justify-content: space-between;
-        height: 40px;
-        padding-bottom: .5em;
-        padding-top: .5em;
-        padding-right: .5em;
-        padding-left: .5em;
+        width: 140px;
+        max-height: 200px;
+        position: relative;
+        padding: 10px;
+        margin: 10px;
+        background-color: lighten($secondary-color,45%);
+        animation: addFruit 1s ease-in-out;
         &__avatar{
             border-radius: 10px;            
-            height: 100%;
-            overflow: hidden;
-            margin-right: 1.5em;
+            height: 70%;
+            width: 100%;
+            overflow: hidden;            
             &__img {
-                height: 100%;                
+                height: 100%;
+                width: 100%;                
             }
         }
         &__info {
+            height: 30%;
+            display: flex;
+            flex-direction: column;
             &__name {
                 font-weight: bold;
             }
-            &__calories {
+            &__quantity {
+                display: flex;
+                justify-content: space-between;
+                .calories__counter {
+                    width: 50%;
+                }
+                &--calories {
                 font-style: italic;
+                }
+                @media only screen and (max-width: 375px) {
+                    &--calories {
+                        font-size: .8em;
+                    }                
+                }
             }
-            @media only screen and (max-width: 375px) {
-                &__calories {
-                    font-size: .8em;
-                }                
+        }
+        .fa {
+            color: $tertiary-color;
+            opacity: 0.6;
+            font-size: 2em;
+            position : absolute;
+            margin-left: 80%;
+            cursor: pointer;
+            &:hover {
+                color: $tertiary-color;
+                opacity: 1;
+                font-size: 2.2em;
             }
-
         }
     }
+    @media only screen and (max-width: 768px) {
+        justify-content: center;
+    }
   }
+  @media only screen and (max-width: 768px) {
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+    }
 }  
   /* Style the navigation links */
   #myMenu li a {
@@ -112,7 +166,6 @@ export default {
             })
             .then(res => res.json())
             .then(fruitsData => {
-                console.log(fruitsData);
                 this.$store.dispatch('getFruitsData', fruitsData);
             })
             .catch(responseError => {console.log(responseError)});
