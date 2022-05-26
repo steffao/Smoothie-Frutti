@@ -1,24 +1,78 @@
 <template>
-  <HeaderBar />
-  <main>
-    
-  </main>
+  <div>
+    <HeaderBar />
+  <section>    
+    <FruitFinder ref="focusSearchBar" />
+    <main v-if="selectedFruits.length > 0">
+      <FruitsCart />
+      <CalCulator />
+    </main>
+    <main v-else>
+      <FruitsCartEmpty @triggerFocusSearch="focusFruitFinder"/>
+    </main>
+  </section>    
+  
   <FooterBar />
+  </div>
+  
 </template>
 
-<style>
-
-
-
-
-/* main */
-main{
-    padding-left: 10%;
-    padding-right: 10%;
+<style lang="scss" scoped>
+@keyframes displayMain {
+    0% {opacity: 0;}
+    100% {opacity: 1;}    
 }
+section{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+main {
+  margin-top: 20px;
+  display: flex;
+  box-shadow: 0px 7px 30px -15px rgba(0,0,0,0.75);
+  animation: displayMain 1s ease-in-out;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
 </style>
 
-<script setup>
+<script>
+  import { mapState } from 'vuex' 
   import HeaderBar from '@/components/navigation/Header.vue'
   import FooterBar from '@/components/navigation/Footer.vue'
- </script>
+  import FruitFinder from '@/components/navigation/FruitFinder.vue'
+  import FruitsCart from '@/components/navigation/FruitsCart.vue'
+  import FruitsCartEmpty from '@/components/navigation/FruitsCartEmpty.vue'
+  import CalCulator from '@/components/navigation/CalCulator.vue'
+  
+export default {
+  components : {
+    HeaderBar,
+    FooterBar,
+    FruitFinder,
+    FruitsCart,
+    CalCulator,
+    FruitsCartEmpty
+  },
+  data : function () {
+    return {    
+    }
+  },
+  computed: {
+    ...mapState({ allFruits: 'fruits' },{ cart: 'cart' }),
+    selectedFruits: function () {
+        return this.$store.getters.FRUITS_CART_GETTER
+    }
+  },
+  methods : {
+    focusFruitFinder : function () {
+      this.$refs.focusSearchBar.$refs.searchBarInput.focus()
+    }
+    
+  }
+    
+}  
+  
+</script>
