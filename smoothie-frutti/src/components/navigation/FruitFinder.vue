@@ -2,7 +2,8 @@
     
     <aside>
         <input ref="searchBarInput" type="search" class="mySearch" @keyup="findFruits()" placeholder="Search..." title="Type in a fruit" v-model="searchedFruit">
-        <div v-click-away="onClickAway" v-show="searchedFruit" class="fruitsFound">            
+        <div v-click-away="onClickAway" v-show="searchedFruit" class="fruitsFound">
+            <div class="fruitUnavailable" v-if="filteredFruits.length < 1">Fruit unavailable ...</div>           
             <article class="fruitFound" v-for="(fruit,index) in filteredFruits" :key="index" @click="addNewFruit(fruit)">
                 <div class="fruitFound__avatar">
                     <img class="fruitFound__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
@@ -10,7 +11,7 @@
                 <div class="fruitFound__info">
                     <h3 class="fruitFound__info__name">{{fruit.name}}</h3>
                     <div class="fruitFound__info__calories"><strong>{{fruit.nutritions.calories}}</strong> (cal per 100g)</div>
-                </div>
+                </div>                
             </article>
         </div>
     </aside>
@@ -41,6 +42,14 @@ $quadrary-color : #730217;
     overflow-y: scroll;
     height: 200px;
     animation: downFruitsFound .5s ease-in-out;
+    .fruitUnavailable {
+        display: flex;
+        height: 80px;
+        padding-bottom: .5em;
+        padding-top: .5em;
+        padding-right: .5em;
+        padding-left: .5em;
+    }
     .fruitFound {
         display: flex;
         height: 80px;
@@ -80,6 +89,7 @@ $quadrary-color : #730217;
   
 <script>
 import { mapState } from 'vuex'
+import fruitsData from '../../assets/db/smoothie-frutti-db.json'
     
 export default {
     components : {
@@ -100,7 +110,7 @@ export default {
     },
     
     methods : {
-        findFruits : function () {            
+        findFruits : function () {     
             this.filteredFruits = this.allFruits.filter(fruit => fruit.name.toUpperCase().indexOf(this.searchedFruit.toUpperCase()) > -1)
         },
         onClickAway(event) {
@@ -110,20 +120,8 @@ export default {
             this.$store.dispatch('addFruitToCart', newFruit)
             this.searchedFruit = ''
         },        
-        getAllFruits: function () {
-            const corsProxy = "https://evening-lake-85504.herokuapp.com/"
-            const apiUrl = "https://www.fruityvice.com/api/fruit"
-            fetch(`${corsProxy}${apiUrl}/all`, {
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(res => res.json())
-            .then(fruitsData => {
-                this.$store.dispatch('getFruitsData', fruitsData);
-            })
-            .catch(responseError => {console.log(responseError)});
+        getAllFruits: function () {            
+                this.$store.dispatch('getFruitsData', fruitsData)
         },
     }
 }  

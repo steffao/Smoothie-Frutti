@@ -18,7 +18,7 @@ export default createStore({
         TOTAL_CALORIES_GETTER(state) {
             let total = 0
             for (let item of state.cart) {           
-                total += item.nutritions.calories                
+                total += item.nutritions.calories/100 * item.quantity                
             }
             return total
         },   
@@ -31,7 +31,7 @@ export default createStore({
             state.cart.push(newFruit)
         },
         REMOVE_FRUIT(state, selectedFruit) {
-            state.cart.splice(state.cart.findIndex(fruit => fruit.name === selectedFruit.name),1)            
+            state.cart.splice(state.cart.findIndex(fruit => fruit.id === selectedFruit.id),1)            
         },
         CLEAR_CART(state) {
             Object.assign(state.cart, clearCart())

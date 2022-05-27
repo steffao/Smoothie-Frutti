@@ -8,9 +8,9 @@
                 <div class="selectedFruit__info">
                     <h3 class="selectedFruit__info__name">{{selectedFruit.name}}</h3>
                     <div class="selectedFruit__info__quantity">
-                        <div class="selectedFruit__info__quantity--calories"><b>{{selectedFruit.nutritions.calories}}</b> cal</div>
-                        <input type="number" class="calories__counter" name="calories" step="100" placeholder="100" v-model="amountOfCalories"> 
-
+                        <div class="selectedFruit__info__quantity--calories"><b>{{selectedFruit.nutritions.calories /100 * selectedFruit.quantity}}</b> cal</div>
+                        <NumberInput class="calories__counter" :selectedFruit="selectedFruit"/>
+                        <!-- <input type="number" class="calories__counter" name="calories" step="100" placeholder="100" v-model="amountOfCalories"> -->
                     </div>        
                 </div>
                 <i class="fa fa-times" aria-hidden="true" @click="removeFruit(selectedFruit)"></i>               
@@ -91,14 +91,14 @@ $quadrary-color : #730217;
             }
         }
         .fa {
-            color: $tertiary-color;
+            color: $quadrary-color;
             opacity: 0.6;
             font-size: 2em;
             position : absolute;
             margin-left: 80%;
             cursor: pointer;
             &:hover {
-                color: $tertiary-color;
+                color: $quadrary-color;
                 opacity: 1;
                 font-size: 2.2em;
             }
@@ -112,30 +112,21 @@ $quadrary-color : #730217;
         width: 100%;
         margin: 0px 0px 0px 0px;
     }
-}  
-  /* Style the navigation links */
-  #myMenu li a {
-    padding: 12px;
-    text-decoration: none;
-    color: black;
-    display: block
-  }
-  
-  #myMenu li a:hover {
-    background-color: #eee;
-  }
+}
 </style>
   
 <script>
 import { mapState } from 'vuex' 
+import NumberInput from '@/components/navigation/NumberInput.vue'
     
 export default {
     components : {
+        NumberInput
     },
     
     data : function () {
         return {
-            amountOfCalories : 100,         
+                
         }
     },
     computed: {
@@ -145,31 +136,15 @@ export default {
         }
     },
     mounted () {
-        this.getAllFruits()
     },
     methods : {
-        findFruits : function () {            
-            this.filteredFruits = this.allFruits.filter(fruit => fruit.name.toUpperCase().indexOf(this.searchedFruit.toUpperCase()) > -1)
-        },              
+        updateCalories: function (selectedFruit) {
+            this.$store.dispatch('removeFruitToCart', selectedFruit)
+        },
         removeFruit : function(selectedFruit) {
             console.log(selectedFruit)
             this.$store.dispatch('removeFruitToCart', selectedFruit)            
-        },        
-        getAllFruits: function () {
-            const corsProxy = "https://evening-lake-85504.herokuapp.com/"
-            const apiUrl = "https://www.fruityvice.com/api/fruit"
-            fetch(`${corsProxy}${apiUrl}/all`, {
-                method: 'get',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(res => res.json())
-            .then(fruitsData => {
-                this.$store.dispatch('getFruitsData', fruitsData);
-            })
-            .catch(responseError => {console.log(responseError)});
-        }
+        },
     }
     
 }  
