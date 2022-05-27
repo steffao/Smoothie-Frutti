@@ -12,7 +12,7 @@
         "sugar": 10.3
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl": "https://pelicanproduce.com/wp-content/uploads/2020/03/gala-apple-2-350x350.jpg"
 }, {
     "genus": "Prunus",
     "name": "Apricot",
@@ -27,7 +27,7 @@
         "sugar": 3.2
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://i.pinimg.com/originals/42/4a/26/424a266a5be91bf8c3751e0996de4352.jpg"
 }, {
     "genus": "Musa",
     "name": "Banana",
@@ -42,7 +42,7 @@
         "sugar": 17.2
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://st.focusedcollection.com/13422768/i/650/focused_180574434-stock-photo-close-view-banana-white-background.jpg"
 }, {
     "genus": "Rubus",
     "name": "Blackberry",
@@ -57,7 +57,7 @@
         "sugar": 4.5
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://www.downloadclipart.net/large/blackberry-fruit-png-clipart.png"
 }, {
     "genus": "Fragaria",
     "name": "Blueberry",
@@ -72,7 +72,7 @@
         "sugar": 5.4
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://i.pinimg.com/originals/7e/c2/e7/7ec2e717913f3d3b0ebcdafb1c291914.png"
 }, {
     "genus": "Prunus",
     "name": "Cherry",
@@ -87,7 +87,7 @@
         "sugar": 8
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://media.istockphoto.com/photos/cherry-trio-with-stem-and-leaf-picture-id157428769?k=20&m=157428769&s=612x612&w=0&h=6h04mpukiriaaMpL7US6O0oDA-RUqCvogZyReUbVRe4="
 }, {
     "genus": "Durio",
     "name": "Durian",
@@ -102,7 +102,7 @@
         "sugar": 6.75
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://thai-ginger.com/wp-content/uploads/2018/03/mao-shan-wang-durian--400x400.jpg"
 }, {
     "genus": "Ficus",
     "name": "Fig",
@@ -117,7 +117,7 @@
         "sugar": 16
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://previews.123rf.com/images/atoss/atoss1501/atoss150100261/35841639-figs-fruits-isolated-on-white-background.jpg"
 }, {
     "genus": "Ribes",
     "name": "Gooseberry",
@@ -132,7 +132,7 @@
         "sugar": 0
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://s.alicdn.com/@sc04/kf/U950d723b2e9943429e3d38b95be66968N.png_300x300.png"
 }, {
     "genus": "Vitis",
     "name": "Grapes",
@@ -147,7 +147,7 @@
         "sugar": 15.48
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://static.vecteezy.com/system/resources/thumbnails/007/327/023/small/bouquet-grapes-of-red-and-green-isolated-on-white-background-with-cut-out-free-photo.jpg"
 }, {
     "genus": "Malus",
     "name": "Green Apple",
@@ -162,7 +162,7 @@
         "sugar": 6.4
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://photodune.img.customer.envatousercontent.com/files%2F249739487%2F15.jpg?w=200&h=200&fit=crop&crop=faces%2Cedges&fm=pjpg&q=40&s=d726279a691240b18383701d89a60c7c"
 }, {
     "genus": "Psidium",
     "name": "Guava",
@@ -177,7 +177,7 @@
         "sugar": 9
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://freepngimg.com/thumb/guava/2-2-guava-transparent-thumb.png"
 }, {
     "genus": "Apteryx",
     "name": "Kiwi",
@@ -192,7 +192,7 @@
         "sugar": 9
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://cdn.tridge.com/image/original/61/a2/98/61a2987988ccbf895dab974aaf1fa34d21026a93.jpg"
 }, {
     "genus": "Citrus",
     "name": "Lemon",
@@ -207,7 +207,7 @@
         "sugar": 2.5
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://anacortesoilandvinegarbar.com/wp-content/uploads/2015/10/lemons.jpg"
 }, {
     "genus": "Citrus",
     "name": "Lime",
@@ -222,7 +222,7 @@
         "sugar": 1.7
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://static.vecteezy.com/system/resources/thumbnails/003/402/205/small/lime-with-slices-isolated-on-a-white-background-free-photo.jpeg"
 }, {
     "genus": "Vaccinium",
     "name": "Lingonberry",
@@ -237,7 +237,7 @@
         "sugar": 5.74
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://image.shutterstock.com/mosaic_250/168421146/1917904967/stock-photo-lingonberry-berries-on-twigs-with-leaves-on-a-white-background-isolated-1917904967.jpg"
 }, {
     "genus": "Litchi",
     "name": "Lychee",
@@ -252,7 +252,7 @@
         "sugar": 15
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://thumbs.dreamstime.com/b/fresh-lychee-or-litchi-is-tropical-fruit-isolated-on-white-background-184422328.jpg"
 }, {
     "genus": "Mangifera",
     "name": "Mango",
@@ -267,7 +267,7 @@
         "sugar": 13.7
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://thumbs.dreamstime.com/b/mango-white-background-fresh-106275427.jpg"
 }, {
     "genus": "Cucumis",
     "name": "Melon",
@@ -282,7 +282,7 @@
         "sugar": 8
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://st.focusedcollection.com/13422768/i/650/focused_180574572-stock-photo-half-honeydew-melon-white-background.jpg"
 }, {
     "genus": "Citrus",
     "name": "Orange",
@@ -297,7 +297,7 @@
         "sugar": 8.2
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://previews.123rf.com/images/utima/utima1311/utima131100146/24077398-%EC%98%A4%EB%A0%8C%EC%A7%80-%EA%B3%BC%EC%9D%BC-%ED%9D%B0%EC%83%89-%EB%B0%B0%EA%B2%BD%EC%97%90-%EA%B3%A0%EB%A6%BD.jpg"
 }, {
     "genus": "Carica",
     "name": "Papaya",
@@ -312,7 +312,7 @@
         "sugar": 1
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://s.alicdn.com/@sc04/kf/Ubd64a879018048679ae39ab5cff737d12.jpg_300x300.jpg"
 }, {
     "genus": "Passiflora",
     "name": "Passion Fruit",
@@ -327,7 +327,7 @@
         "sugar": 11.2
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://www.vandrunenfarms.com/filebin/images/products/full/Passion_Fruit.jpg"
 }, {
     "genus": "Pyrus",
     "name": "Pear",
@@ -342,7 +342,7 @@
         "sugar": 10
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://makedrinks.org/wp-content/uploads/2022/01/ingredients-pears-270x270.jpg"
 }, {
     "genus": "Diospyros",
     "name": "Persimmon",
@@ -357,7 +357,7 @@
         "sugar": 18
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://thumbs.dreamstime.com/b/isolated-one-whole-half-persimmon-white-background-isolated-fruits-isolated-one-whole-half-persimmon-white-104502315.jpg"
 }, {
     "genus": "Ananas",
     "name": "Pineapple",
@@ -372,7 +372,7 @@
         "sugar": 9.85
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://pngroyale.com/wp-content/uploads/2021/10/pineapple-png-hd-300x300.png"
 }, {
     "genus": "Prunus",
     "name": "Plum",
@@ -387,7 +387,7 @@
         "sugar": 9.92
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://st.depositphotos.com/1000141/1395/i/600/depositphotos_13950523-stock-photo-one-ripe-fresh-plum-with.jpg"
 }, {
     "genus": "Rubus",
     "name": "Raspberry",
@@ -402,7 +402,7 @@
         "sugar": 4.4
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://purepng.com/public/uploads/large/purepng.com-raspberryraspberrya-sweet-rose-colored-wineanglo-latinvinum-raspeys-1701527398228bv5l7.png"
 }, {
     "genus": "Fragaria",
     "name": "Strawberry",
@@ -417,7 +417,7 @@
         "sugar": 5.4
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://media.angi.com/s3fs-public/strawberry.jpg?impolicy=thumbnail"
 }, {
     "genus": "Solanum",
     "name": "Tomato",
@@ -432,7 +432,7 @@
         "sugar": 2.6
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://healthyfamilyproject.com/wp-content/uploads/2017/02/tomatoes-thumb.jpg"
 }, {
     "genus": "Spondias",
     "name": "Umbu",
@@ -447,7 +447,7 @@
         "sugar": 0
     },
     "quantity": 100,
-    "imageUrl":null
+    "imageUrl":"https://st4.depositphotos.com/14844018/25448/i/600/depositphotos_254483410-stock-photo-umbu-fruit-isolated-white-background.jpg"
 }, {
     "genus": "Citrullus",
     "name": "Watermelon",
@@ -460,5 +460,7 @@
         "fat": 0.2,
         "calories": 30,
         "sugar": 6
-    }
+    },
+    "quantity": 100,
+    "imageUrl":"https://www.kandyfreshfruits.com/wp-content/uploads/2013/06/watermelon1.jpg"
 }]

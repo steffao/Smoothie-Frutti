@@ -6,7 +6,8 @@
             <div class="fruitUnavailable" v-if="filteredFruits.length < 1">Fruit unavailable ...</div>           
             <article class="fruitFound" v-for="(fruit,index) in filteredFruits" :key="index" @click="addNewFruit(fruit)">
                 <div class="fruitFound__avatar">
-                    <img class="fruitFound__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
+                    <img v-if="fruit.imageUrl" class="fruitFound__avatar__img" :src="fruit.imageUrl" alt="">
+                    <img v-else class="fruitFound__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
                 </div>
                 <div class="fruitFound__info">
                     <h3 class="fruitFound__info__name">{{fruit.name}}</h3>

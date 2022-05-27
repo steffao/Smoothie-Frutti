@@ -3,7 +3,8 @@
         <div  class="fruitsCart">
             <article class="selectedFruit" v-for="(selectedFruit,index) in selectedFruits" :key="index">
                 <div class="selectedFruit__avatar">
-                    <img class="selectedFruit__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
+                    <img v-if="selectedFruit.imageUrl" class="selectedFruit__avatar__img" :src="selectedFruit.imageUrl" alt="">
+                    <img v-else class="selectedFruit__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
                 </div>
                 <div class="selectedFruit__info">
                     <h3 class="selectedFruit__info__name">{{selectedFruit.name}}</h3>
@@ -64,7 +65,8 @@ $quadrary-color : #730217;
             overflow: hidden;            
             &__img {
                 height: 100%;
-                width: 100%;                
+                width: 100%;
+                background-color: white;              
             }
         }
         &__info {
