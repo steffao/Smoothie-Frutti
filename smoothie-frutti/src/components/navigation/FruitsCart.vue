@@ -3,7 +3,7 @@
         <div  class="fruitsCart">
             <article class="selectedFruit" v-for="(selectedFruit,index) in selectedFruits" :key="index">
                 <div class="selectedFruit__avatar">
-                    <img v-if="selectedFruit.imageUrl" class="selectedFruit__avatar__img" :src="selectedFruit.imageUrl" alt="">
+                    <img v-if="selectedFruit.imageUrl" class="selectedFruit__avatar__img" :src="selectedFruit.imageUrl" alt="Picture of a fruit">
                     <img v-else class="selectedFruit__avatar__img" src="../../assets/img/fruits/standard_fruit.jpeg" alt="Picture of a mix of fruits">
                 </div>
                 <div class="selectedFruit__info">
