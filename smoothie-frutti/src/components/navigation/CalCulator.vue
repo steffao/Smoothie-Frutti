@@ -1,5 +1,5 @@
 <template>
-    <div v-show="totalCalories" class="calculator">
+    <div v-show="selectedFruits" class="calculator">
         <div class="calculator__results">
             <span class="totalCalories">{{messageTotalCalories}}</span>        
             <span class="totalCalories totalCalories__cal">{{totalCalories}} calories</span>

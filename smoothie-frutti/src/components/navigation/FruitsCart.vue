@@ -9,7 +9,7 @@
                 <div class="selectedFruit__info">
                     <h3 class="selectedFruit__info__name">{{selectedFruit.name}}</h3>
                     <div class="selectedFruit__info__quantity">
-                        <div class="selectedFruit__info__quantity--calories"><b>{{selectedFruit.nutritions.calories /100 * selectedFruit.quantity}}</b> cal</div>
+                        <div class="selectedFruit__info__quantity--calories"><b>{{Math.round(selectedFruit.nutritions.calories /100 * selectedFruit.quantity)}}</b> cal</div>
                         <NumberInput class="calories__counter" :selectedFruit="selectedFruit"/>
                         <!-- <input type="number" class="calories__counter" name="calories" step="100" placeholder="100" v-model="amountOfCalories"> -->
                     </div>        

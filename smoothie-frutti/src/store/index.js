@@ -14,7 +14,7 @@ export default createStore({
             for (let item of state.cart) {           
                 total += item.nutritions.calories/100 * item.quantity                
             }
-            return total
+            return Math.round(total)
         },   
     },
     mutations: {
