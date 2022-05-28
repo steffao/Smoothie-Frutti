@@ -1,10 +1,9 @@
 <template>
     <div v-show="totalCalories" class="calculator">
         <div class="calculator__results">
-            <span class="totalCalories">{{messageTotalCalories}} :</span>        
+            <span class="totalCalories">{{messageTotalCalories}}</span>        
             <span class="totalCalories totalCalories__cal">{{totalCalories}} calories</span>
-        </div>
-              
+        </div> 
     </div>    
 </template>
   
@@ -96,15 +95,9 @@ export default {
             return this.$store.getters.FRUITS_CART_GETTER
         },
         totalCalories: function () {
-            return this.$store.getters.TOTAL_CALORIES_GETTER        
+            return this.$store.getters.TOTAL_CALORIES_GETTER
         }
-        
     },
-    mounted () {
-    },
-    methods : {
-        
-    }
     
 }  
     

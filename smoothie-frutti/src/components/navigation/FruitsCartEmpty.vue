@@ -58,7 +58,6 @@ export default {
     },
     methods : {
         focusSearchBar : function () {
-            console.log('trigger')
             this.$emit('triggerFocusSearch');
         },
     }

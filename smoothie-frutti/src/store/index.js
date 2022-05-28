@@ -1,11 +1,5 @@
 import {createStore} from 'vuex'
 
-const clearCart = () => {
-    return { 
-        cart:[]
-    }
-}
-
 export default createStore({
     state:{ 
         fruits:null,
@@ -18,7 +12,7 @@ export default createStore({
         TOTAL_CALORIES_GETTER(state) {
             let total = 0
             for (let item of state.cart) {           
-                total += item.nutritions.calories                
+                total += item.nutritions.calories/100 * item.quantity                
             }
             return total
         },   
@@ -28,15 +22,19 @@ export default createStore({
             state.fruits = data  
         },
         ADD_FRUIT(state, newFruit) {
-            state.cart.push(newFruit)
+            const existingFruit = state.cart.find(fruit => fruit.id === newFruit.id)
+            if (existingFruit) {
+                newFruit.quantity += 100
+            } else {
+                state.cart.push(newFruit)
+            }
         },
         REMOVE_FRUIT(state, selectedFruit) {
-            state.cart.splice(state.cart.findIndex(fruit => fruit.name === selectedFruit.name),1)            
+            state.cart.splice(state.cart.findIndex(fruit => fruit.id === selectedFruit.id),1)            
         },
         CLEAR_CART(state) {
             Object.assign(state.cart, clearCart())
-        },  
-        
+        },
     },
     actions:{
         getFruitsData({commit}, data) { 
@@ -47,17 +45,6 @@ export default createStore({
         },
         removeFruitToCart({commit}, selectedFruit) { 
             commit("REMOVE_FRUIT", selectedFruit);
-        },
-        getFruitData({commit}, data) { 
-            commit("UPDATE_STATE", data);
-            const expiredTimestamp = (new Date()).getTime() + 24*60*60*1000 // current timestamp + 24h
-            const expiredDate = new Date(expiredTimestamp)
-            setCookie('userData', JSON.stringify(data),expiredDate); 
-        },
-        resetState({ commit }) {            
-            commit('RESET_STATE')
-            deleteCookie('userData')
-            
-        },       
+        },               
     }
-  })
+})
