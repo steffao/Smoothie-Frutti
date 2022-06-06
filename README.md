@@ -1,61 +1,42 @@
-# Smoothie Frutti
+# smoothie-frutti
 
-The Smoothie calories calculator
+This template should help get you started developing with Vue 3 in Vite.
 
-## Description
+## Recommended IDE Setup
 
-Smoothie Frutti is a calories calculator. It tells you the quantity of calories in your smoothie. The platform is linked to a fruit information database via an API.
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
 
-## Getting Started
+## Customize configuration
 
-### Dependencies
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+## Project Setup
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
+```sh
+npm install
 ```
 
-## Help
+### Compile and Hot-Reload for Development
 
-Any advise for common problems or issues.
+```sh
+npm run dev
 ```
-command to run if program contains helper info
+
+### Compile and Minify for Production
+
+```sh
+npm run build
 ```
 
-## Authors
+### Run Unit Tests with [Cypress Component Testing](https://docs.cypress.io/guides/component-testing/introduction)
 
-Contributors names and contact info
+```sh
+npm run test:unit # or `npm run test:unit:ci` for headless testing
+```
 
-Steffao
+### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+```sh
+npm run build
+npm run test:e2e # or `npm run test:e2e:ci` for headless testing
+```
